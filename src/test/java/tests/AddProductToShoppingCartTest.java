@@ -30,12 +30,11 @@ public class AddProductToShoppingCartTest extends TestBase{
         productDetailsObject = new ProductDetailsPage(driver);
         alertObject = new AlertJS(driver);
         productDetailsObject.pressOnAddtoCart();
-        Thread.sleep(10000);
-        assertEquals(alertObject.productAddedAlert(), "Product added");
-        alertObject.acceptAlert();
+        Thread.sleep(1000);
+        assertEquals(alertObject.siteAlert(driver), "Product added");
+        alertObject.acceptAlert(driver);
 
     }
-
 
     @Test(priority = 3)
     public void UserCanRemoveProductFromCart(){

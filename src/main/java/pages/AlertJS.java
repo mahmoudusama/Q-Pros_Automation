@@ -2,11 +2,6 @@ package pages;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
-
-import java.time.Duration;
 
 public class AlertJS extends PageBase{
 
@@ -14,16 +9,12 @@ public class AlertJS extends PageBase{
         super(driver);
     }
 
-    public String productAddedAlert(){
-        Alert alert = driver.switchTo().alert();
-//        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(30));
-//        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
-        String alertMessage= alert.getText();
-        System.out.println(alertMessage);
-        return alertMessage;
+    public String siteAlert(WebDriver driver) throws InterruptedException {
+        Thread.sleep(2000);
+        return driver.switchTo().alert().getText();
     }
 
-    public void acceptAlert(){
+    public void acceptAlert(WebDriver driver){
         driver.switchTo().alert().accept();
     }
 }

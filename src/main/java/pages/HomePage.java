@@ -18,8 +18,15 @@ public class HomePage extends PageBase{
     @FindBy(xpath = "//a[@id='login2']")
     WebElement loginLink;
 
+    @FindBy(linkText="Log out")
+    WebElement logoutLink;
+
+    @FindBy(xpath = "//a[@id='nameofuser']")
+    public WebElement welcomeMessage;
+
     @FindBy(linkText="Cart")
     WebElement cartLink;
+
 
     public void openRegistrationPage(){
         clickButton(registerLink);
@@ -27,6 +34,10 @@ public class HomePage extends PageBase{
 
     public void openLoginPage(){
         clickButton(loginLink);
+    }
+
+    public void openLogoutPage(){
+        clickButton(logoutLink);
     }
 
     public void openCartPage(){
