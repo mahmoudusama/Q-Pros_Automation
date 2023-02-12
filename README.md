@@ -2,7 +2,7 @@
 A UI Automation framework using Selenium WebDriver with Java, TestNG and Maven.
 -------------------------------------------------------------------------------
 QprosBlazeDemo
-This a UI Automation framework using Selenium WebDriver with Java, TestNG and Maven that automate the below mentioned use cases:
+Below Use cases are automated:
 
 Register and login
 Check the listed Categories has Items
