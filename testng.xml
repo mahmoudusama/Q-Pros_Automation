@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="nopcommerce Regression suite">
+<suite name="DemoBlaze Test suite">
     <parameter
             name="browser" value="firefox">
     </parameter>
-    <test verbose="2" preserve-order="true"
-          name="Regression Test">
+    <test verbose="2" preserve-order="true" name="Function Test">
         <classes>
-            <class
-                    name="tests.UserRegistrationTest">
-            </class>
+            <class name="tests.UserRegWithDDTAndPropertiesFile" />
+            <class name="tests.UserRegWithDDTAndExcel" />
+            <class name="tests.CategoriesNavigationTests" />
+            <class name="tests.AddProductToShoppingCartTest" />
+            <class name="tests.CompleteCheckout" />
         </classes>
     </test>
 </suite>
+
+
+

@@ -5,8 +5,10 @@ import org.openqa.selenium.WebDriver;
 
 public class AlertJS extends PageBase{
 
+    private WebDriver driver;
+
     public AlertJS(WebDriver driver) {
-        super(driver);
+        this.driver = driver;
     }
 
     public String siteAlert(WebDriver driver) throws InterruptedException {

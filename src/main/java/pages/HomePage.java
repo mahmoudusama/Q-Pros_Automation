@@ -2,45 +2,41 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+
 
 public class HomePage extends PageBase{
 
+
+    private WebDriver driver;
+    By registerLink = By.linkText("Sign up");
+    By loginLink = By.xpath("//a[@id='login2']");
+    By logoutLink = By.linkText("Log out");
+    By cartLink = By.linkText("Cart");
+    public By welcome = By.xpath("//a[@id='nameofuser']");
+
     public HomePage(WebDriver driver) {
-        super(driver);
+        this.driver = driver;
     }
 
-
-    @FindBy(linkText="Sign up")
-    WebElement registerLink;
-
-    @FindBy(xpath = "//a[@id='login2']")
-    WebElement loginLink;
-
-    @FindBy(linkText="Log out")
-    WebElement logoutLink;
-
-    @FindBy(xpath = "//a[@id='nameofuser']")
-    public WebElement welcomeMessage;
-
-    @FindBy(linkText="Cart")
-    WebElement cartLink;
-
-
     public void openRegistrationPage(){
-        clickButton(registerLink);
+        driver.findElement(registerLink).click();
     }
 
     public void openLoginPage(){
-        clickButton(loginLink);
+        driver.findElement(loginLink).click();
     }
 
     public void openLogoutPage(){
-        clickButton(logoutLink);
+        driver.findElement(logoutLink).click();
     }
 
     public void openCartPage(){
-        clickButton(cartLink);
+        driver.findElement(cartLink).click();
     }
+
+    public String welcomeMessage() throws InterruptedException {
+        Thread.sleep(3000);
+        return driver.findElement(welcome).getText();
+    }
+
 }

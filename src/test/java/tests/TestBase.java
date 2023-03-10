@@ -1,20 +1,21 @@
 package tests;
 
+import io.cucumber.testng.AbstractTestNGCucumberTests;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
+import org.openqa.selenium.safari.SafariDriver;
+import org.testng.annotations.*;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
-public class TestBase {
+public class TestBase extends AbstractTestNGCucumberTests {
 
     public static WebDriver driver;
 
-    @BeforeSuite
+    @BeforeMethod
     @Parameters(("browser"))
     public void startDriver(@Optional("firefox") String browserName){
         if (browserName.equalsIgnoreCase("chrome"))
@@ -25,12 +26,20 @@ public class TestBase {
         {
             driver = new FirefoxDriver();
         }
+        else if (browserName.equalsIgnoreCase("edge"))
+        {
+            driver = new EdgeDriver();
+        }
+        else if (browserName.equalsIgnoreCase("safari"))
+        {
+            driver = new SafariDriver();
+        }
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
         driver.navigate().to("https://www.demoblaze.com/");
     }
 
-    @AfterSuite
+    @AfterMethod
     public void stopDriver()
     {
         driver.quit();

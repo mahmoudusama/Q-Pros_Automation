@@ -1,41 +1,41 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
-public class SearchCategoryPage extends PageBase{
 
-    public SearchCategoryPage(WebDriver driver){
-        super(driver);
+
+public class SearchCategoryPage extends PageBase {
+
+    private WebDriver driver;
+    By categoriesNav = By.id("cat");
+    By listOfPhones = By.linkText("Phones");
+    By listOfLaptops = By.linkText("Laptops");
+    By listOfMonitors = By.linkText("Monitors");
+
+    public SearchCategoryPage(WebDriver driver) {
+        this.driver = driver;
     }
 
-    @FindBy(linkText = "Phones")
-    WebElement listOfPhones;
-
-    @FindBy(linkText = "Laptops")
-    WebElement listOfLaptops;
-
-    @FindBy(linkText = "Monitors")
-    WebElement listOfMonitors;
-
-    @FindBy(css="h4.card-title")
-    WebElement selectedProduct;
-
-    public void PhonesCategories(){
-        clickButton(listOfPhones);
+    public void categoriesNavigation() {
+        driver.findElement(categoriesNav);
+//        clickButton(categoriesNav);
     }
 
-    public void LaptopsCategories(){
-        clickButton(listOfLaptops);
+    public void chooseCategory(String categoryName) {
+        if (categoryName.equalsIgnoreCase("Phones")) {
+            driver.findElement(listOfPhones).click();
+        } else if (categoryName.equalsIgnoreCase("Laptops")) {
+            driver.findElement(listOfLaptops).click();
+        } else if (categoryName.equalsIgnoreCase("Monitors")) {
+            driver.findElement(listOfMonitors).click();
+        } else {
+            assert categoryName.isEmpty() : "Choose from Phones, Laptop or Monitors categories";
+        }
     }
 
-    public void MonitorsCategories(){
-        clickButton(listOfMonitors);
-    }
-
-    public void ProductSelected(String productName){
-        clickButton(selectedProduct);
+    public void productSelected(String productName){
+        driver.findElement(By.xpath("//a[normalize-space()='" + productName + "']")).click();
     }
 
 
