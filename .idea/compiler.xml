@@ -6,9 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="TAF" />
+        <module name="generic-test-automation-framework" />
         <module name="Q-Pros" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="TAF" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

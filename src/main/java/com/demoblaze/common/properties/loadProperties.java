@@ -1,4 +1,4 @@
-package data;
+package com.demoblaze.common.properties;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

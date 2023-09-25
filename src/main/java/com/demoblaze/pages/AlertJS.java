@@ -1,6 +1,5 @@
-package pages;
+package com.demoblaze.pages;
 
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 
 public class AlertJS extends PageBase{

@@ -3,28 +3,64 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>selenium</groupId>
-    <artifactId>TAF</artifactId>
+    <groupId>com.demoblaze</groupId>
+    <artifactId>generic-test-automation-framework</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
+        <!-- JAVA VERSION -->
+        <java-version>17</java-version>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <selenium.version>4.2.0</selenium.version>
+        <testng.version>6.14.3</testng.version>
+        <cucumber.version>7.11.0</cucumber.version>
+        <cucumber.reporting.plugin.version>5.6.0</cucumber.reporting.plugin.version>
+
     </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>net.masterthought</groupId>
+                <artifactId>maven-cucumber-reporting</artifactId>
+                <version>${cucumber.reporting.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>execution</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>target/cucumber</outputDirectory>
+                            <inputDirectory>target/cucumber</inputDirectory>
+                            <jsonFiles>
+                                <jsonFile>*.json</jsonFile>
+                            </jsonFiles>
+                            <mergeFeaturesWithRetest>true</mergeFeaturesWithRetest>
+                            <mergeFeaturesById>true</mergeFeaturesById>
+                            <checkBuildResult>false</checkBuildResult>
+                            <skipEmptyJSONFiles>true</skipEmptyJSONFiles>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
     <dependencies>
         <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>6.14.3</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.2.0</version>
+            <version>${selenium.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.poi</groupId>
@@ -40,28 +76,27 @@
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-core</artifactId>
-            <version>7.11.0</version>
+            <version>${cucumber.version}</version>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>7.11.0</version>
+            <version>${cucumber.version}</version>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-testng</artifactId>
-            <version>7.11.0</version>
+            <version>${cucumber.version}</version>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-gherkin</artifactId>
-            <version>7.11.0</version>
+            <version>${cucumber.version}</version>
         </dependency>
         <dependency>
             <groupId>net.masterthought</groupId>
             <artifactId>cucumber-reporting</artifactId>
-            <version>5.7.5</version>
+            <version>${cucumber.reporting.plugin.version}</version>
         </dependency>
-
     </dependencies>
 </project>

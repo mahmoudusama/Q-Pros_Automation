@@ -4,10 +4,9 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.testng.Assert;
-import pages.*;
-import tests.TestBase;
-import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.*;
+import testBase.TestBase;
+import com.demoblaze.pages.*;
 
 public class addrandomproduct extends TestBase {
 
@@ -30,7 +29,7 @@ public class addrandomproduct extends TestBase {
     }
 
     @And("choose {string}")
-    public void choose(String productName) throws InterruptedException {
+    public void choose(String productName){
         SearchCatObject = new SearchCategoryPage(driver);
         SearchCatObject.productSelected(productName);
     }
@@ -50,6 +49,6 @@ public class addrandomproduct extends TestBase {
         homePageObject = new HomePage(driver);
         homePageObject.openCartPage();
         ShoppingCartObject = new ShoppingCartPage(driver);
-        Assert.assertEquals(productDetailsObject.checkProductName(), productName);
+        assertEquals(productDetailsObject.checkProductName(), productName);
     }
 }
